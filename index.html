@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Test</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Quiz Test</h1>
+
+  <div class="error-message" id="errorMessage"></div>
+
+  <div class="screen active" id="startScreen">
+    <div class="start-screen-content">
+      <p style="font-size: 18px; color: #666; margin-bottom: 10px;">
+        Test your knowledge across various topics! Answer questions within the time limit and climb the leaderboard.
+      </p>
+
+      <div class="quiz-selector">
+        <h3>Select Quiz Category</h3>
+        <div class="quiz-options" id="quizOptions"></div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="playerName">Your Name</label>
+        <input type="text" id="playerName" class="player-name-input" placeholder="Enter your name" maxlength="20">
+      </div>
+
+      <div class="button-row">
+        <button class="btn" onclick="startQuiz()">Start Quiz</button>
+        <button class="btn" onclick="showLeaderboard()">View Leaderboard</button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="uploadModalOverlay">
+      <div class="modal-content">
+        <h3>Upload Custom Quiz (JSON)</h3>
+        <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Paste your quiz JSON below. The structure must contain 'title', 'description', and an array of 'questions'.</p>
+        <textarea id="jsonInput" placeholder='Paste your JSON here (see console for example structure)'></textarea>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" onclick="closeUploadModal()">Cancel</button>
+          <button class="btn" onclick="uploadCustomQuiz()">Load Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen" id="quizScreen">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressBar"></div>
+    </div>
+
+    <div class="quiz-header">
+      <div class="score-display">Score: <span id="score">0</span></div>
+      <div class="timer">Time: <span id="timer">30</span>s</div>
+    </div>
+
+    <div class="question-container">
+      <div class="question-number" id="questionNumber"></div>
+      <div class="question-text" id="questionText"></div>
+    </div>
+
+    <div class="answers" id="answersContainer"></div>
+
+    <button class="btn next-btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+  </div>
+
+  <div class="screen" id="resultScreen">
+    <h2>Quiz Completed!</h2>
+    <div class="final-score" id="finalScore"></div>
+    <div class="performance-message" id="performanceMessage"></div>
+    <div class="leaderboard" id="leaderboardDisplay"></div>
+    <button class="btn" onclick="restartQuiz()">Play Again</button>
+    <button class="btn" onclick="goToStart()">Main Menu</button>
+  </div>
+</div>
+
+<script src="js/quiz-script.js"></script>
+<script>
+</script>
+</body>
+</html>
